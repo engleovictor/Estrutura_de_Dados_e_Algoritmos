@@ -3,6 +3,7 @@
 #include "arvore_binaria.h"
 
 ArvoreBinaria *montarArPreSim(int *pre, int *sim, int tam) {
+    if(tam == 0) return NULL;
     if(tam == 1) {
         ArvoreBinaria *new = (ArvoreBinaria *) malloc(sizeof(ArvoreBinaria));
         new->chave = pre[0];
@@ -11,12 +12,11 @@ ArvoreBinaria *montarArPreSim(int *pre, int *sim, int tam) {
         return new;
     }
     int i = 0;
-    int val = pre[0];
     while(pre[0] != sim[i]) i++;
     ArvoreBinaria *new = (ArvoreBinaria *) malloc(sizeof(ArvoreBinaria));
-    new->chave = val;
+    new->chave = pre[0];
     new->esq   = montarArPreSim(&(pre[1]),&(sim[0]),i);
-    new->dir   = montarArPreSim(&(pre[i+1]),&(sim[i+1]),tam-(i + 1));
+    new->dir   = montarArPreSim(&(pre[i+1]),&(sim[i+1]),tam-(i+1));
     return new;
 }
 
