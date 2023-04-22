@@ -27,5 +27,6 @@ void rotDirAVL(ArvoreAVL **T, int chave);
 void doubleRotEsqAVL(ArvoreAVL **T, int chave);
 void doubleRotDirAVL(ArvoreAVL **T, int chave);
 ArvoreAVL *buscaArvoreAVL(ArvoreAVL *princ, ArvoreAVL **pai, int chave);
+int removerAVL(ArvoreAVL **T, ArvoreAVL **pai, int chave);
 
-#endif // _AVL_H_
+#endif  //_AVL_H_;
