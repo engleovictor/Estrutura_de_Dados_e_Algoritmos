@@ -34,7 +34,7 @@ int ***matrizCC(int *chaves, int *fchaves, int *nfchaves, int **matrizF, int tam
             } else {
                 int main_key, main_value = 2147483647; // Maior inteiro possivel;
                 for(int k=i+1;k<j+1;k++) {
-                    if(main_value > doubleMatriz[0][i][k-1] + doubleMatriz[0][k][j] + matrizF[i][j]) {
+                    if(main_value > doubleMatriz[0][i][k-1] + doubleMatriz[0][k][j] + matrizF[i][j]) { // {> para 1° Arvore >= para a Ultima Arvore.}
                         main_value = doubleMatriz[0][i][k-1] + doubleMatriz[0][k][j] + matrizF[i][j];
                         main_key = chaves[k-1];
                     }

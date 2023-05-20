@@ -8,4 +8,5 @@ int **matrizF(int *fchaves, int *nfchave, int tam);
 int ***matrizCC(int *chaves, int *fchaves, int *nfchaves, int **matrizF, int tam);
 ArvoreBinaria *montarComFreq(int lin, int col, int *chaves, int ***doubleMatriz);
 int returnIndexKey(int chave, int *p);
+
 #endif // _AVF_H_
