@@ -3,20 +3,14 @@
 
 #include "avl.h"
 
+int ins[] = {20,40,60,80,100,10,30,120,130};
+int size = 9;
+
 int main() {
     ArvoreAVL *mainT = NULL;
     ArvoreAVL **pai = &mainT;
-    inserirChave(&mainT, 30);
-    inserirChave(&mainT, 10);
-    inserirChave(&mainT, 20);
-    inserirChave(&mainT, 40);
-    inserirChave(&mainT, 50);
-    inserirChave(&mainT, 60);
-    inserirChave(&mainT, 70);
+    for(int i=0;i<size;i++) {inserirChave(&mainT, ins[i]);
     preordem(mainT);
-    printf("\n");
-    removerChave(&mainT,pai,40);
-    preordem(mainT);
-    printf("\n");
+    printf("\n");}
     return 0;
 }

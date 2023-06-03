@@ -20,14 +20,28 @@ int inserirChave(ArvoreAVL **T, int chave) {
     ArvoreAVL *t = *T;
     int verif = 0;
 
-    if(t->chave == chave) return 0; //Não insere nada;
+    if(t->chave == chave) return 0;
     else if(t->chave > chave) {
         verif = inserirChave(&(t->esq), chave);
-        if(verif == 1) (t->bal)--;
+        if(verif == 1) {
+            if(t->bal > 0) {
+                (t->bal)--;
+                return 0;
+            } else {
+                (t->bal)--;
+            }
+        }
     }
     else {
         verif = inserirChave(&(t->dir), chave);
-        if(verif == 1) (t->bal)++;
+        if(verif == 1) {
+            if(t->bal < 0) {
+                (t->bal)++;
+                return 0;
+            } else {
+                (t->bal)++;
+            }
+        }
     }
 
     if(t->bal == 2) {
@@ -49,12 +63,12 @@ int buscarChave(ArvoreAVL *T, int chave) {
 
     else if(T->chave > chave) {
         if(T->esq == NULL) return T->chave;
-        else buscarChave(T->esq, chave);
+        else return buscarChave(T->esq, chave);
     }
 
     else {
         if(T->dir == NULL) return T->chave;
-        else buscarChave(T->dir, chave);
+        else return buscarChave(T->dir, chave);
     }
 }
 
