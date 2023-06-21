@@ -13,6 +13,8 @@ int main() {
     inserirChave(&mainT, 70);        
     inserirChave(&mainT, 80);
 
+    //for(int i=1;i<50001;i++) inserirChave(&mainT,i);
+
     tornarArvoreLinear(&mainT);
 
     preordem(mainT);

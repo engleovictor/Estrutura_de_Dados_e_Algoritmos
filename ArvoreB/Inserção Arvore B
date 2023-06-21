@@ -1,0 +1,23 @@
+O balanceamento em uma árvore B é um processo crucial para garantir que a altura da árvore seja mantida em um nível ótimo, o que resulta em um desempenho eficiente nas operações de busca, inserção e exclusão.
+
+Existem algumas regras que governam o balanceamento em uma árvore B:
+
+    Regra da quantidade mínima de chaves: Cada nó, exceto o nó raiz, deve ter pelo menos ⌈m/2⌉ - 1 chaves, onde m é a ordem da árvore B. Isso garante que a árvore não tenha nós subutilizados.
+
+    Regra da quantidade máxima de chaves: Cada nó pode ter no máximo m - 1 chaves. Isso garante que a árvore não tenha nós sobrecarregados.
+
+    Regra dos filhos: Um nó não folha com k chaves tem k + 1 filhos. Isso garante que a árvore mantenha uma estrutura de árvore binária completa.
+
+Durante a inserção e exclusão de chaves, essas regras são mantidas através de operações de reequilíbrio. Existem várias técnicas para realizar o reequilíbrio em uma árvore B, sendo as mais comuns:
+
+    Split: Quando um nó atinge o número máximo de chaves, ele é dividido em dois nós. O valor mediano é promovido para o nó pai, e os valores menores vão para um novo nó à esquerda, enquanto os valores maiores vão para um novo nó à direita.
+
+    Merge: Quando um nó tem o número mínimo de chaves após uma exclusão, ele pode ser fundido com um nó vizinho. A chave do nó pai que separava os dois nós é removida, e os nós são combinados em um único nó.
+
+    Redistribuição: Quando um nó tem o número mínimo de chaves após uma exclusão, ele pode receber uma chave de um nó vizinho que tenha um número maior de chaves.
+
+Essas operações de reequilíbrio são aplicadas recursivamente ao longo do caminho da inserção ou exclusão, garantindo que a árvore mantenha seu balanceamento.
+
+É importante destacar que diferentes implementações de árvores B podem ter variações nas regras e nas técnicas de balanceamento. Além disso, existem outras variantes de árvores balanceadas, como as árvores B+ e B*, que possuem regras e estratégias de balanceamento um pouco diferentes.
+
+Em resumo, o balanceamento em uma árvore B é mantido através de operações de reequilíbrio, como split, merge e redistribuição, que garantem que a árvore cumpra as regras de quantidade mínima e máxima de chaves em cada nó, mantendo assim uma altura balanceada.

@@ -82,58 +82,96 @@ int removerChave(ArvoreAVL **T, ArvoreAVL **pai, int chave) {
         if(t->esq == NULL && t->dir == NULL) {
            
             if((*pai)->chave > chave) {
+            
+                if((*pai)->dir == NULL) verif = 1;
                 (*pai)->esq = NULL;
-                ((*pai)->bal)++;
+                ((*pai)->bal)++; // Diminui o módulo, então propaga!
+                free(t);
+                return verif;
+            
             } else {
+                
+                if((*pai)->esq == NULL) verif = 1;
                 (*pai)->dir = NULL;
-                ((*pai)->bal)--;
-            } free(t);
+                ((*pai)->bal)--; // Diminui o módulo, então propaga!
+                free(t);
+                return verif;
+
+            } 
 
         } else if(t->esq == NULL) {
            
             if((*pai)->chave > chave) {
+                
+                if((*pai)->dir == NULL) verif = 1;
                 (*pai)->esq = t->dir;
                 ((*pai)->bal)++;
+                free(t);
+                return verif;
+
             } else {
+                
+                if((*pai)->esq == NULL) verif = 1;
                 (*pai)->dir = t->dir;
                 ((*pai)->bal)--;
-            } free(t);
+                free(t);
+                return verif;
+
+            } 
         
         } else if(t->dir == NULL) {
             
             if((*pai)->chave > chave) {
+            
+                if((*pai)->dir == NULL) verif = 1;
                 (*pai)->esq = t->esq;
                 ((*pai)->bal)++;
+                free(t);            
+                return verif;
+
             } else {
+            
+                if((*pai)->esq == NULL) verif = 1;
                 (*pai)->dir = t->esq;
                 ((*pai)->bal)--;
-            } free(t);
+                free(t);
+                return verif;
+
+            }
 
         } else {
+
             int newchave = buscarChave(t->esq, chave);
-            removerChave(&((*T)->esq),T,newchave);
+            verif = removerChave(&((*T)->esq),T,newchave);
             (*T)->chave = newchave;
+
         } // Depois de remover temos que verificar qual o bal do Pai;
 
-        if((*pai)->chave == 0) return 1;
-        else return 3;
-
     } else if(t->chave > chave) {
+        
         verif = removerChave(&(t->esq), T, chave);
-        if(verif == 1) (t->bal)++;
+        if((verif == 1 || verif == 2) && ((*T) != NULL)) ((*T)->bal)++;
+
     } else {
+        
         verif = removerChave(&(t->dir), T, chave);
-        if(verif == 1) (t->bal)--;
+        if((verif == 1 || verif == 2) && ((*T) != NULL))  ((*T)->bal)--;
+    
     }
 
     if(t->bal == 2) {
+    
         if(t->dir->bal > 0) return rotEsq(T);
         else return doubleRotEsq(T);
 
     } else if(t->bal == -2) {
+    
         if(t->esq->bal < 0) return rotDir(T);
         else return doubleRotDir(T);
+    
     } else {
+
+        // Nada!! 
 
     } return verif;
 }
