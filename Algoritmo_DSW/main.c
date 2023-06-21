@@ -19,8 +19,8 @@ int main() {
 
     preordem(mainT);
     printf("\n");
-    int p = contarNos(mainT);
-    printf("%d %d\n", p, minValToCheia(p));
+    //int p = contarNos(mainT);
+    //printf("%d %d\n", p, minValToCheia(p));
 
     tornarCompletaDeUmaLinear(&mainT);
 

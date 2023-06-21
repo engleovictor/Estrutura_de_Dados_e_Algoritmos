@@ -45,7 +45,7 @@ void tornarCompletaDeUmaLinear(ArvoreAVL **T) {
 void tornarCompleta_Abs(ArvoreAVL **T, int *p) {
     if(*T != NULL && *p > 0) {
         rotEsq(T);
-        printf("%d\n",*p);
+        //printf("%d\n",*p);
         (*p)--;
         tornarCompleta_Abs(&((*T)->dir),p);
     }
